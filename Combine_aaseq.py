@@ -2,8 +2,8 @@
 
 # EXTRACTION
 #a = 'C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_20200730_High_Fitness.fasta'
-a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\20200730_MiSeqv3_High_fitness.fasta"
-save_path = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Long_High_VR'
+a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\20200730_MiSeqv3_Low_fitness.fasta"
+save_path = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Long_Low_VR'
 
 import numpy
 import os.path
@@ -53,10 +53,10 @@ print('Amino Acid Seq not confirmed:', aaseq_nana)
 
 # List: VR_list[i] = [“>low_fitness_1\n”, “GFGFGF\n”]
 
-name = 'aaseq_Long_High'
+name = 'aaseq_Long_Low.fasta'
 CompName = os.path.join(save_path, name)
 file = open(CompName, 'w')
 for k in range(len(aaseq_ana)):
     num = str(k + 1)
-    file.write("> Low_Fitness" + num + "\n" + aaseq_ana[k] + "\n")
+    file.write(">Low_fitness" + num + "\n" + aaseq_ana[k] + "\n")
 file.close()
