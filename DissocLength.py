@@ -3,15 +3,14 @@ import seaborn
 import matplotlib.pyplot as plt
 import os
 
-#Done
-# SHort_High, Short_Low, Long_High
+
 # Dissociate the Variable Regions by length and plot
 
 # Import all the Variable regions
-a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_High_VR\\VR1.fasta"
-b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_High_VR\\VR2.fasta"
-c = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_High_VR\\VR3.fasta"
-d = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Short_High_VR'
+a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\long_High_VR\\VR1.fasta"
+b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_High_VR\\VR2.fasta"
+c = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_High_VR\\VR3.fasta"
+d = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Long_High_VR'
 
 # Read all the files into a line
 
@@ -62,7 +61,7 @@ print( 'VR1:', VR1, '\n VR2:', VR2, '\n VR3:', VR3 )
 VR1_5, VR1_6, VR1_7 = [], [], []
 VR1_list = [VR1_5, VR1_6, VR1_7]
 lenVR1 = numpy.arange(5, 8, 1)
-numVR1 = numpy.zeros(1, len(VR1_list)) #Total number of aaseq per length
+numVR1 = [0, 0, 0] #Total number of aaseq per length
 for position, line in enumerate(VR1):
     print(position, line)
     for i in range(len(VR1_list)):
@@ -75,7 +74,7 @@ for position, line in enumerate(VR1):
 VR2_12, VR2_13, VR2_14, VR2_15 = [], [], [], []
 VR2_list = [VR2_12, VR2_13, VR2_14, VR2_15]
 lenVR2 = numpy.arange(12, 16, 1)
-numVR2 = numpy.zeros(1, len(VR2_list)) #Total number of aaseq per length
+numVR2 = [0, 0, 0, 0]
 for position, line in enumerate(VR2):
     print(position, line)
     for i in range(len(VR2_list)):
@@ -89,7 +88,7 @@ for position, line in enumerate(VR2):
 VR3_8, VR3_9, VR3_10, VR3_11, VR3_12, VR3_13, VR3_14, VR3_15, VR3_16, VR3_17, VR3_18, VR3_19, VR3_20, VR3_21, VR3_22 = [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
 VR3_list = [VR3_8, VR3_9, VR3_10, VR3_11, VR3_12, VR3_13, VR3_14, VR3_15, VR3_16, VR3_17, VR3_18, VR3_19, VR3_20, VR3_21, VR3_22]
 lenVR3 = numpy.arange(8, 23, 1)
-numVR3 = numpy.zeros(1, len(VR3_list)) #Total number of aaseq per length
+numVR3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 for position, line in enumerate(VR3):
     print(position, line)
     for i in range(len(VR3_list)):
@@ -140,20 +139,18 @@ for k in range(len(VR_list)):
         pwm = numpy.log2((ppm/b))
         print(pwm)
         # Make the heatmap
-        seaborn.heatmap(pwm, yticklabels=aa, vmin=0, xticklabels=pos)
+        min = pwm[numpy.isfinite(pwm)].min()
+        max = pwm[numpy.isfinite(pwm)].max()
+        print(min, max)
+        seaborn.heatmap(pwm, vmin=min, vmax=max, cmap="YlGnBu", xticklabels=pos, yticklabels=aa)
         plt.title('Heat Map for High Amino Acids in %s for length: %d' % (VarRegName, VarRegLen))
         # Save the Image
         save_path = d
-        file_name = ('Second_HeatMap_Short_High_%s_len_%d.png' %(VarRegName, VarRegLen))
+        file_name = ('HeatMap_Long_High_%s_len_%d.png' %(VarRegName, VarRegLen))
         plt.savefig(os.path.join(save_path, file_name))
         plt.show()
 
-# Choose a different color scheme
-# Figure out the max and min situation
-# Expected Range -3 to 4 (expect some higher positives)
 # Quality check - Get out the original seq if it matches
-# Plot a histogram of the different lengths present in the files
-#       to see the distribution between the lengths
 # Instead of:
 # >1
 # GGY
