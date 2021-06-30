@@ -1,4 +1,4 @@
-# Quantitative Analysis
+# Matrix Extraction
 
 # Goal - Analyze the data at each position using the pfm and conducting tests
 # What - Obtain the pfm (in this case it is mat)
