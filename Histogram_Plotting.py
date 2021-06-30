@@ -30,7 +30,7 @@ for position, line in enumerate(LongHigh_list):
 print(numLoHi)
 
 # Long Low
-LongLow_file = open(a)
+LongLow_file = open(b)
 Long_nb = LongLow_file.read()
 LongLow_list = Long_nb.splitlines()
 LongLow_file.close()
@@ -68,8 +68,6 @@ ax.legend()
 # ax.bar_label(rects1, padding=3)
 # ax.bar_label(rects2, padding=3)
 fig.tight_layout()
-plt.show()
-
 save_path = d
 file_name = ('Histogram of Lengths of VR Regions')
 plt.savefig(os.path.join(save_path, file_name))

@@ -1,4 +1,9 @@
-# Goal: Calculate the difference between the position weight matrices of the high and low fitness
+# Quantitative Analysis
+
+# Goal - Analyze the data at each position using the pfm and conducting tests
+# What - Obtain the pfm (in this case it is mat)
+#       - For each position or column, calculate the proportion of amino acids
+#       - Carry out test to see the proportion and the siginificance score
 
 import numpy
 import seaborn
@@ -6,16 +11,15 @@ import matplotlib.pyplot as plt
 import os
 
 
-# Dissociate the Variable Regions by length and plot
 
 # Import all the Variable regions
-a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_High_VR\\VR1.fasta"
-b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_High_VR\\VR2.fasta"
-c = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_High_VR\\VR3.fasta"
-d = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_Low_VR\\VR1.fasta"
-e = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_Low_VR\\VR2.fasta"
-f = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_Low_VR\\VR3.fasta"
-g = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Long_Diffmaps/'
+a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_High_VR\\VR1.fasta"
+b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_High_VR\\VR2.fasta"
+c = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_High_VR\\VR3.fasta"
+d = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_Low_VR\\VR1.fasta"
+e = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_Low_VR\\VR2.fasta"
+f = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_Low_VR\\VR3.fasta"
+g = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/'
 
 # Read all the files into a line
 file_loc = [a, b, c, d, e, f] # Location of the files
@@ -135,17 +139,18 @@ for k in range(22): #VRL_list = [VR1_5L, VR1_6L, VR1_7L, VR2_12L
     print(k)
     print('Num of amino acids:', len(VRL_list[k]), len(VRH_list[k]))
     if len(VRL_list[k]) >= 1 and len(VRH_list[k]) >= 1:
+        # Can put another if statement for if there is one and not the other.
         gL = VRL_list[k]
         gH = VRH_list[k]
-        s = (len(aa), len(gL[1]))
-        matL = numpy.zeros(s)
-        matH = numpy.zeros(s)
-        pos = numpy.arange(1, len(gL[1])+1, 1)
+        s = (len(aa), len(gL[0]))
+        matL = numpy.zeros(s, dtype=int)
+        matH = numpy.zeros(s, dtype=int)
+        pos = numpy.arange(1, len(gL[0])+1, 1)
         VarRegName = VarReg_Name[k]  # Which CDR region
         VarRegLen = VarReg_Len[k]  # Which variable region
         print(VarRegLen, VarRegName)
         for position, line in enumerate(gL):
-            for j in range(len(gL[1])):
+            for j in range(len(gL[0])):
                 for i in range(len(aa)):
                     aa = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'W', 'V', 'Y', '-']
                     j=j
@@ -153,7 +158,7 @@ for k in range(22): #VRL_list = [VR1_5L, VR1_6L, VR1_7L, VR2_12L
                         num = matL[i, j] + 1
                         matL[i, j] = num
         for position, line in enumerate(gH):
-            for j in range(len(gH[1])):
+            for j in range(len(gH[0])):
                 for i in range(len(aa)):
                     aa = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'W', 'V', 'Y', '-']
                     j=j
@@ -172,18 +177,37 @@ for k in range(22): #VRL_list = [VR1_5L, VR1_6L, VR1_7L, VR2_12L
         pwm = pwmH-pwmL
         print(pwmL, pwmH)
         print(pwm)
-        # Make the heatmap
-        min = pwm[numpy.isfinite(pwm)].min()
-        max = pwm[numpy.isfinite(pwm)].max()
-        print(min, max)
-        seaborn.heatmap(pwm, vmin=min, vmax=max, cmap="YlGnBu", xticklabels=pos, yticklabels=aa)
-        plt.title('Difference Heat Map for Amino Acids in %s for length: %d' % (VarRegName, VarRegLen))
-        # Save the Image
-        save_path = g
-        file_name = ('HeatMap_Long_High_%s_len_%d.png' % (VarRegName, VarRegLen))
-        plt.savefig(os.path.join(save_path, file_name))
-        plt.show()
+
+        # Save the Matrix # Adjust name to fit path
+        matLname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/Matrix_ShortLow_%s_%d' % (VarRegName, VarRegLen))
+        matHname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/Matrix_ShortHigh_%s_%d' % (VarRegName, VarRegLen))
+        numpy.savetxt(matLname, matL, delimiter=',') # to convert to int also matL.astype(int)
+        numpy.savetxt(matHname, matH, delimiter=',')
+        print(matL, matH)
+
+        # path = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix'
+        # matLname = ('Matrix_ShortLow2_%s_%d.fasta' % (VarRegName, VarRegLen))
+        # CompName = os.path.join(path, matLname)
+        # file = open(CompName, 'w')
+        # for b in range(len(matL)):
+        #     file.write(matL[b] + "\n")
+        # file.close()
+        #
+        # matHname = ('Matrix_ShortHigh2_%s_%d.fasta' % (VarRegName, VarRegLen))
+        # CompName = os.path.join(path, matHname)
+        # file = open(CompName, 'w')
+        # for c in range(len(matH)):
+        #     file.write(matH[c] + "\n")
+        # file.close()
 
 
 # Problem - k doesnt go till 22
 # What happens when there is some amino acids in one and none in the other? (Ex amino acids in CDR8 for high and none for CDR8low)
+
+
+# for i in range()  array_example[row1][2]]
+# Y and G  YYEF as YYYY
+# Numbers of Ys and Gs seen, position dominance
+# Average No. of Ys and Gs, Nos. of Y's in the region
+# Do a statistical test - chi-squared test
+# Fourth to last position, look between E and G in the aaseq pos[-4]

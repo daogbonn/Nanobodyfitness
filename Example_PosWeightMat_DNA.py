@@ -46,6 +46,10 @@ I = len(a[1])  # Length of sequences
 ppm = mat / N
 print(ppm)
 
+per = ppm*100
+print(per)
+
+
 b = 0.25 # for nucleotides, for aa it is 1/20 = 0.05
 pwm = numpy.log2((ppm/b))
 print('pwm:', pwm)
