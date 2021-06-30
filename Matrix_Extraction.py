@@ -13,12 +13,12 @@ import os
 
 
 # Import all the Variable regions
-a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_High_VR\\VR1.fasta"
-b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_High_VR\\VR2.fasta"
-c = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_High_VR\\VR3.fasta"
-d = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_Low_VR\\VR1.fasta"
-e = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_Low_VR\\VR2.fasta"
-f = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_Low_VR\\VR3.fasta"
+a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_High_VR\\VR1.fasta"
+b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_High_VR\\VR2.fasta"
+c = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_High_VR\\VR3.fasta"
+d = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_Low_VR\\VR1.fasta"
+e = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_Low_VR\\VR2.fasta"
+f = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_Low_VR\\VR3.fasta"
 g = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/'
 
 # Read all the files into a line
@@ -179,10 +179,14 @@ for k in range(22): #VRL_list = [VR1_5L, VR1_6L, VR1_7L, VR2_12L
         print(pwm)
 
         # Save the Matrix # Adjust name to fit path
-        matLname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/Matrix_ShortLow_%s_%d' % (VarRegName, VarRegLen))
-        matHname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/Matrix_ShortHigh_%s_%d' % (VarRegName, VarRegLen))
+        matLname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/FreqMatrix/freqMatrix_Long_Low_%s_%d' % (VarRegName, VarRegLen))
+        matHname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/FreqMatrix/freqMatrix_Long_High_%s_%d' % (VarRegName, VarRegLen))
+        ppmLname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/PpmMatrix/ppmMatrix_Long_Low_%s_%d' % (VarRegName, VarRegLen))
+        ppmHname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/PpmMatrix/ppmMatrix_Long_High_%s_%d' % (VarRegName, VarRegLen))
         numpy.savetxt(matLname, matL, delimiter=',') # to convert to int also matL.astype(int)
         numpy.savetxt(matHname, matH, delimiter=',')
+        numpy.savetxt(ppmLname, ppmL, delimiter=',')  # to convert to int also matL.astype(int)
+        numpy.savetxt(ppmHname, ppmH, delimiter=',')
         print(matL, matH)
 
         # path = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix'
