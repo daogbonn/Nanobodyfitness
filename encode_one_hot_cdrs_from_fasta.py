@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
 
-# this file is part of the github repository: https://github.com/nwhoppe/nanobody_fitness
-# author: nwhoppe
-# created: 3/15/20
-
 import argparse
 import itertools
 import pandas as pd

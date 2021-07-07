@@ -1,9 +1,5 @@
 #!/usr/bin/env python
 
-# this file is part of the github repository: https://github.com/nwhoppe/nanobody_fitness
-# author: nwhoppe
-# created: 3/22/20
-
 import argparse
 import sys
 from encode_one_hot_cdrs_from_fasta import parse_cdrs_from_seq, parse_identifier_sequence_from_fasta
