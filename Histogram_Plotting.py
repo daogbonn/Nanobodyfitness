@@ -56,8 +56,8 @@ VR_list = ['CDR1_5', 'CDR1_6', 'CDR1_7', 'CDR2_12', 'CDR2_13', 'CDR2_14', 'CDR2_
 x = numpy.arange(len(VR_list))
 width = 0.35
 fig, ax = plt.subplots()
-rects1 = ax.bar(x - width/2, numLoHi, width, label='High Antibodies')
-rects2 = ax.bar(x + width/2, numLoLo, width, label='Low Antibodies')
+rects1 = ax.bar(x - width/2, numLoHi, width, label='High Fitness')
+rects2 = ax.bar(x + width/2, numLoLo, width, label='Low Fitness')
 ax.set_ylabel('Number of Sequences')
 ax.set_xlabel('CDR region lengths')
 ax.set_xticks(x)
