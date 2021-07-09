@@ -33,16 +33,19 @@ dt = dt.fit(train, train_true_class)
 
 # Prediction
 sol = dt.predict(test)
+# Tune hyperparameters of max depth and min leaf size
 
 # See the Decision Tree
 tree.plot_tree(dt)
-plt.savefig('DecisionTree.png')
+plt.savefig('DecisionTree.pdf')
+# pixels per inch to 300
 plt.show()
 
 # Another Decision Tree
 # try dtreeviz
 
 # Other
+# prob for test
 proba = dt.predict_proba(train) # 	Predict class probabilities of the input samples X.
 print(proba)
 # weird that the probabilities are only 1 and 0; if so the success criteria (or percent) should be greater.

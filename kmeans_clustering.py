@@ -14,7 +14,7 @@ from model_functions import clusterpred
 a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\test_low_one_hot_encoded_cdrs.csv"
 b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\test_high_one_hot_encoded_cdrs.csv"
 
-train, train_true_class, test, test_true_class = split_dataframes_train_test(a, b, 0.7)
+train, train_true_class, test, test_true_class = split_dataframes_train_test(a, b, 0.3)
 
 # Scale the feautures
 scaler = StandardScaler()
@@ -22,14 +22,14 @@ scaled = scaler.fit_transform(train)
 
 # Training
 kmeans = KMeans(n_clusters=2, init="k-means++")
-kmeans.fit(train)
+kmeans = kmeans.fit(train) #kmeans = kmeans.fit(train)
 # Attributes of kmeans
 print('The lowest SSE value:', kmeans.inertia_)  # The lowest SSE value
 print('Final locations of the centroid: \n', kmeans.cluster_centers_)
 print('The number of iterations required to converge: ', kmeans.n_iter_)
 # Prediction
 sol = kmeans.predict(test)
-sola = kmeans.fit_predict(test)
+sola = kmeans.fit_predict(test) # fits and predicts the data
 
 diff = 0
 for a in range(len(sol)):

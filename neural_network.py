@@ -13,7 +13,7 @@ from sklearn.metrics import confusion_matrix
 a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\test_low_one_hot_encoded_cdrs.csv"
 b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\test_high_one_hot_encoded_cdrs.csv"
 
-train, train_true_class, test, test_true_class = split_dataframes_train_test(a, b, 0.7)
+train, train_true_class, test, test_true_class = split_dataframes_train_test(a, b, 0.3)
 
 
 # Model
