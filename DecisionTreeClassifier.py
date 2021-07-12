@@ -16,8 +16,8 @@ from IPython.display import Image
 from pydot import graph_from_dot_data
 from dtreeviz.trees import dtreeviz
 
-a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\test_low_one_hot_encoded_cdrs.csv"
-b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\test_high_one_hot_encoded_cdrs.csv"
+a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\combined_clean_aln_low_one_hot_encoded_cdrs.csv"
+b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\combined_clean_aln_high_one_hot_encoded_cdrs.csv"
 
 train, train_true_class, test, test_true_class = split_dataframes_train_test(a, b, 0.3)
 
@@ -26,10 +26,11 @@ train, train_true_class, test, test_true_class = split_dataframes_train_test(a, 
 # dt.fit(train, train_true_class)
 
 # Model
-dt = tree.DecisionTreeClassifier()
-# gini versus entropy
+dt = tree.DecisionTreeClassifier() # gini versus entropy
 dt = dt.fit(train, train_true_class)
 
+print('Depth:', dt.get_depth())
+print('Leaf Size', dt.get_n_leaves())
 
 # Prediction
 sol = dt.predict(test)
@@ -47,7 +48,7 @@ plt.show()
 # Other
 # prob for test
 proba = dt.predict_proba(train) # 	Predict class probabilities of the input samples X.
-print(proba)
+#print(proba)
 # weird that the probabilities are only 1 and 0; if so the success criteria (or percent) should be greater.
 
 # Compute accuracy
@@ -66,11 +67,59 @@ print(suc*100, '%')
 
 
 
-#  Note
-# the Success percent is 58.4285%
+
+# Checking for max depth and accuracy
+
+depth = numpy.linspace(2, 25, num=24).astype(int)
+lfsz = numpy.linspace(5, 100, num=10).astype(int)
+acc = []
+TPR = []
+TNR = []
+FNR = []
+FPR = []
+for i in range(len(lfsz)):
+    lf = lfsz[i]
+    dt = tree.DecisionTreeClassifier(min_samples_leaf=lf, max_depth=14)  # gini versus entropy
+    dt = dt.fit(train, train_true_class)
+    sol = dt.predict(test)
+    tree.plot_tree(dt)
+    plt.show()
+    true = 0
+    conf = confusion_matrix(test_true_class, sol)
+    suca = (conf[0][0] + conf[1][1]) / conf.sum()
+    TPRa = conf[1][1] / (numpy.sum(conf, 0)[1])
+    TNRa = conf[0][0] / (numpy.sum(conf, 0)[0])
+    FPRa = conf[1][0] / (numpy.sum(conf, 0)[1])
+    FNRa = conf[0][1] / (numpy.sum(conf, 0)[0])
+    acc.append(suca)
+    TPR.append(TPRa)
+    TNR.append(TNRa)
+    FNR.append(FNRa)
+    FPR.append(FPRa)
 
 
-# To Do
-# Look at the decision tree and recapitulate
+
+plt.plot(lfsz, TPR, 'b')
+plt.plot(lfsz, TNR, 'g')
+plt.plot(lfsz, acc, 'k')
+plt.plot(lfsz, FNR, 'r')
+plt.plot(lfsz, FPR, 'y')
+labels = 'TPR', 'TNR', 'Accuracy', 'FNR', 'FPR'
+plt.legend(labels)
+plt.xlabel('Leaf')
+plt.ylabel('Rate')
+plt.title('Leaf versus Rates - Decision Tree Classifier')
+plt.show()
+
+# plt.plot(depth, TPR, 'b')
+# plt.plot(depth, TNR, 'g')
+# plt.plot(depth, acc, 'k')
+# labels = 'TPR', 'TNR', 'Accuracy'
+# plt.legend(labels)
+# plt.xlabel('Depth')
+# plt.ylabel('Rate')
+# plt.title('Depth versus Rates - Decision Tree Classifier')
+# plt.show()
+
 
 

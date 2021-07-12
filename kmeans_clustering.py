@@ -63,6 +63,10 @@ print(conf)
 suc = (conf[0][0] + conf[1][1])/conf.sum()
 print(suc*100, '%')
 
+# Stats
+TPR = conf[1][1]/(numpy.sum(conf,0)[1])
+TNR = conf[0][0]/(numpy.sum(conf,0)[0])
+
 
 # looking at more than two clusters
 predlo, predhi = clusterpred(train, test, test_true_class, 4)
