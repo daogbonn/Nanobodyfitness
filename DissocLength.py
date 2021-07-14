@@ -7,10 +7,10 @@ import os
 # Dissociate the Variable Regions by length and plot
 
 # Import all the Variable regions
-a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\long_High_VR\\VR1.fasta"
-b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_High_VR\\VR2.fasta"
-c = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_High_VR\\VR3.fasta"
-d = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Long_High_VR'
+a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\long_Low_VR\\VR1.fasta"
+b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_Low_VR\\VR2.fasta"
+c = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_Low_VR\\VR3.fasta"
+d = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Long_Low_VR'
 
 # Read all the files into a line
 
@@ -85,10 +85,10 @@ for position, line in enumerate(VR2):
 
 
 # VR2 (length: 8 to 22)
-VR3_8, VR3_9, VR3_10, VR3_11, VR3_12, VR3_13, VR3_14, VR3_15, VR3_16, VR3_17, VR3_18, VR3_19, VR3_20, VR3_21, VR3_22 = [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-VR3_list = [VR3_8, VR3_9, VR3_10, VR3_11, VR3_12, VR3_13, VR3_14, VR3_15, VR3_16, VR3_17, VR3_18, VR3_19, VR3_20, VR3_21, VR3_22]
-lenVR3 = numpy.arange(8, 23, 1)
-numVR3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+VR3_20, VR3_21, VR3_22, VR3_23, VR3_24, VR3_25, VR3_26, VR3_27, VR3_28, VR3_29, VR3_30 = [], [], [], [], [], [], [], [], [], [], []
+VR3_list = [VR3_20, VR3_21, VR3_22, VR3_23, VR3_24, VR3_25, VR3_26, VR3_27, VR3_28, VR3_29, VR3_30]
+lenVR3 = numpy.arange(20, 31, 1)
+numVR3 =  [0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 for position, line in enumerate(VR3):
     print(position, line)
     for i in range(len(VR3_list)):
@@ -100,14 +100,14 @@ for position, line in enumerate(VR3):
 
 VR1_list = [VR1_5, VR1_6, VR1_7]
 VR2_list = [VR2_12, VR2_13, VR2_14, VR2_15]
-VR3_list = [VR3_8, VR3_9, VR3_10, VR3_11, VR3_12, VR3_13, VR3_14, VR3_15, VR3_16, VR3_17, VR3_18, VR3_19, VR3_20, VR3_21, VR3_22]
+VR3_list = [VR3_20, VR3_21, VR3_22, VR3_23, VR3_24, VR3_25, VR3_26, VR3_27, VR3_28, VR3_29, VR3_30 ]
 
-VR_list = [VR1_5, VR1_6, VR1_7, VR2_12, VR2_13, VR2_14, VR2_15, VR3_8, VR3_9, VR3_10, VR3_11, VR3_12, VR3_13, VR3_14, VR3_15, VR3_16, VR3_17, VR3_18, VR3_19, VR3_20, VR3_21, VR3_22]
-VR_list_Name = ['VR1_5', 'VR1_6', 'VR1_7', 'VR2_12', 'VR2_13', 'VR2_14', 'VR2_15', 'VR3_8', 'VR3_9', 'VR3_10', 'VR3_11', 'VR3_12', 'VR3_13', 'VR3_14', 'VR3_15', 'VR3_16', 'VR3_17', 'VR3_18', 'VR3_19', 'VR3_20', 'VR3_21', 'VR3_22']
+VR_list = [VR1_5, VR1_6, VR1_7, VR2_12, VR2_13, VR2_14, VR2_15, VR3_20, VR3_21, VR3_22, VR3_23, VR3_24, VR3_25, VR3_26, VR3_27, VR3_28, VR3_29, VR3_30 ]
+VR_list_Name = ['VR1_5', 'VR1_6', 'VR1_7', 'VR2_12', 'VR2_13', 'VR2_14', 'VR2_15',  'VR3_20', 'VR3_21', 'VR3_22', 'VR3_23', 'VR3_24', 'VR3_25', 'VR3_26', 'VR3_27', 'VR3_28', 'VR3_29', 'VR3_30']
 print('VR_List:', VR_list)
 
-VarReg_Name = ['CDR1', 'CDR1', 'CDR1', 'CDR2', 'CDR2', 'CDR2', 'CDR2', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3']
-VarReg_Len = [5, 6, 7, 12, 13, 14, 15, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+VarReg_Name = ['CDR1', 'CDR1', 'CDR1', 'CDR2', 'CDR2', 'CDR2', 'CDR2', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3']
+VarReg_Len = [5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
 
 # Make the Position Weight Matrix for each for each
 
@@ -143,10 +143,10 @@ for k in range(len(VR_list)):
         max = pwm[numpy.isfinite(pwm)].max()
         print(min, max)
         seaborn.heatmap(pwm, vmin=min, vmax=max, cmap="YlGnBu", xticklabels=pos, yticklabels=aa)
-        plt.title('Heat Map for High Amino Acids in %s for length: %d' % (VarRegName, VarRegLen))
+        plt.title('Heat Map for Low Amino Acids in %s for length: %d' % (VarRegName, VarRegLen))
         # Save the Image
         save_path = d
-        file_name = ('HeatMap_Long_High_%s_len_%d.png' %(VarRegName, VarRegLen))
+        file_name = ('HeatMap_Long_Low_%s_len_%d.png' %(VarRegName, VarRegLen))
         plt.savefig(os.path.join(save_path, file_name))
         plt.show()
 

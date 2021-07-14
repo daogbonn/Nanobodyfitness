@@ -179,10 +179,10 @@ for k in range(22): #VRL_list = [VR1_5L, VR1_6L, VR1_7L, VR2_12L
         print(pwm)
 
         # Save the Matrix # Adjust name to fit path
-        matLname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/FreqMatrix/freqMatrix_Long_Low_%s_%d' % (VarRegName, VarRegLen))
-        matHname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/FreqMatrix/freqMatrix_Long_High_%s_%d' % (VarRegName, VarRegLen))
-        ppmLname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/PpmMatrix/ppmMatrix_Long_Low_%s_%d' % (VarRegName, VarRegLen))
-        ppmHname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/PpmMatrix/ppmMatrix_Long_High_%s_%d' % (VarRegName, VarRegLen))
+        matLname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/freqMatrix_Long_Low_%s_%d' % (VarRegName, VarRegLen))
+        matHname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/freqMatrix_Long_High_%s_%d' % (VarRegName, VarRegLen))
+        ppmLname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/ppmMatrix_Long_Low_%s_%d' % (VarRegName, VarRegLen))
+        ppmHname = ('C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Matrix/ppmMatrix_Long_High_%s_%d' % (VarRegName, VarRegLen))
         numpy.savetxt(matLname, matL, delimiter=',') # to convert to int also matL.astype(int)
         numpy.savetxt(matHname, matH, delimiter=',')
         numpy.savetxt(ppmLname, ppmL, delimiter=',')  # to convert to int also matL.astype(int)

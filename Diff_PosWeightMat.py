@@ -69,19 +69,19 @@ VR1_5L, VR1_6L, VR1_7L = [], [], []
 VR1_5H, VR1_6H, VR1_7H = [], [], []
 VR2_12L, VR2_13L, VR2_14L, VR2_15L = [], [], [], []
 VR2_12H, VR2_13H, VR2_14H, VR2_15H = [], [], [], []
-VR3_8L, VR3_9L, VR3_10L, VR3_11L, VR3_12L, VR3_13L, VR3_14L, VR3_15L, VR3_16L, VR3_17L, VR3_18L, VR3_19L, VR3_20L, VR3_21L, VR3_22L = [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-VR3_8H, VR3_9H, VR3_10H, VR3_11H, VR3_12H, VR3_13H, VR3_14H, VR3_15H, VR3_16H, VR3_17H, VR3_18H, VR3_19H, VR3_20H, VR3_21H, VR3_22H = [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
+VR3_20L, VR3_21L, VR3_22L, VR3_23L, VR3_24L, VR3_25L, VR3_26L, VR3_27L, VR3_28L, VR3_29L, VR3_30L = [], [], [], [], [], [], [], [], [], [], []
+VR3_20H, VR3_21H, VR3_22H, VR3_23H, VR3_24H, VR3_25H, VR3_26H, VR3_27H, VR3_28H, VR3_29H, VR3_30H = [], [], [], [], [], [], [], [], [], [], []
 
 VR1L_list = [VR1_5L, VR1_6L, VR1_7L]
 VR1H_list = [VR1_5H, VR1_6H, VR1_7H]
 VR2L_list = [VR2_12L, VR2_13L, VR2_14L, VR2_15L]
 VR2H_list = [VR2_12H, VR2_13H, VR2_14H, VR2_15H ]
-VR3L_list = [VR3_8L, VR3_9L, VR3_10L, VR3_11L, VR3_12L, VR3_13L, VR3_14L, VR3_15L, VR3_16L, VR3_17L, VR3_18L, VR3_19L, VR3_20L, VR3_21L, VR3_22L]
-VR3H_list = [VR3_8H, VR3_9H, VR3_10H, VR3_11H, VR3_12H, VR3_13H, VR3_14H, VR3_15H, VR3_16H, VR3_17H, VR3_18H, VR3_19H, VR3_20H, VR3_21H, VR3_22H]
+VR3L_list = [VR3_20L, VR3_21L, VR3_22L, VR3_23L, VR3_24L, VR3_25L, VR3_26L, VR3_27L, VR3_28L, VR3_29L, VR3_30L]
+VR3H_list = [VR3_20H, VR3_21H, VR3_22H, VR3_23H, VR3_24H, VR3_25H, VR3_26H, VR3_27H, VR3_28H, VR3_29H, VR3_30H]
 
 lenVR1 = numpy.arange(5, 8, 1)
 lenVR2 = numpy.arange(12, 16, 1)
-lenVR3 = numpy.arange(8, 23, 1)
+lenVR3 = numpy.arange(20, 31, 1)
 lenVR = [lenVR1, lenVR2, lenVR3]
 
 numVR1L = [0, 0, 0]
@@ -126,8 +126,8 @@ for k in range(len(VR_comp)): # Which VR section
 VarReg_Name = ['CDR1', 'CDR1', 'CDR1', 'CDR2', 'CDR2', 'CDR2', 'CDR2', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3', 'CDR3']
 VarReg_Len = [5, 6, 7, 12, 13, 14, 15, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
 
-VRL_list = [VR1_5L, VR1_6L, VR1_7L, VR2_12L, VR2_13L, VR2_14L, VR2_15L, VR3_8L, VR3_9L, VR3_10L, VR3_11L, VR3_12L, VR3_13L, VR3_14L, VR3_15L, VR3_16L, VR3_17L, VR3_18L, VR3_19L, VR3_20L, VR3_21L, VR3_22L]
-VRH_list = [VR1_5H, VR1_6H, VR1_7H, VR2_12H, VR2_13H, VR2_14H, VR2_15H, VR3_8H, VR3_9H, VR3_10H, VR3_11H, VR3_12H, VR3_13H, VR3_14H, VR3_15H, VR3_16H, VR3_17H, VR3_18H, VR3_19H, VR3_20H, VR3_21H, VR3_22H]
+VRL_list = [VR1_5L, VR1_6L, VR1_7L, VR2_12L, VR2_13L, VR2_14L, VR2_15L, VR3_20L, VR3_21L, VR3_22L, VR3_23L, VR3_24L, VR3_25L, VR3_26L, VR3_27L, VR3_28L, VR3_29L, VR3_30L]
+VRH_list = [VR1_5H, VR1_6H, VR1_7H, VR2_12H, VR2_13H, VR2_14H, VR2_15H, VR3_20H, VR3_21H, VR3_22H, VR3_23H, VR3_24H, VR3_25H, VR3_26H, VR3_27H, VR3_28H, VR3_29H, VR3_30H]
 print('len of VRlist:', len(VRH_list), len(VRL_list))
 # Make the Position Weight Matrix for each for each
 aa = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'W', 'V', 'Y', '-']

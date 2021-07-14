@@ -3,9 +3,10 @@
 # Goal - extract the data from the fasta file and organize into groups
 
 # Start with High fitness data
-#a = 'C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Short_20200730_Low_Fitness.fasta'
-a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\20200730_MiSeqv3_Low_fitness.fasta"
-save_path = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Long_Low_VR'
+# a = 'C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\short_high_20.fasta'
+a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\combined_clean_aln_high.fasta"
+save_path = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Long_High_VR'
+#save_path = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Short_High_VR'
 
 import numpy
 import os.path
@@ -27,7 +28,7 @@ print(short_nb_list)
 linea = []
 posa = []
 aaseq = []
-aaseq_line = numpy.arange(1, len(short_nb_list), 3)  # Note this might change
+aaseq_line = numpy.arange(1, len(short_nb_list), 2)  # Note this might change
 for position, line in enumerate(short_nb_list):
     print(position, line)
     linea.append(line)
@@ -42,6 +43,8 @@ print('line is :', linea)
 print('position is:', posa)
 print(aaseq_line)
 print('Amino Acid Sequence:', aaseq)
+print(len(short_nb_list)) #meant to be 42
+print(len(aaseq)) # meanr to be 21
 
 # Here - the data is loaded and split into its lines so position 1 has line 1
 # linea has the lines
@@ -53,7 +56,7 @@ print('Amino Acid Sequence:', aaseq)
 CR1 = 'QVQLVESGGGLVQAGGSLRLSCAASG'
 CR2 = 'MGWYRQAPGKERE'
 CR3 = 'YADSVKGRFTISRDNAKNTVYLQMNSLKPEDTAVYYC'
-CR4 = 'WGQGTQVTVSS'
+CR4 = 'WGQGTQVTVSS--'
 
 # Possible things - c
 # 5 and 3 should not be confirmed for the short
@@ -140,7 +143,7 @@ for position, line in enumerate(aaseq_ana):
     else:
         lexvr2.append(position)
         exvr2.append(vr3)
-    if 22 >= len(vr3) >= 8:
+    if 30 >= len(vr3) >= 20:
         VR3.append(vr3)
         lvr3.append(len(vr3))
     else:
@@ -235,10 +238,10 @@ for position, line in enumerate(VR2):
 
 
 # VR2 (length: 8 to 22)
-VR3_8, VR3_9, VR3_10, VR3_11, VR3_12, VR3_13, VR3_14, VR3_15, VR3_16, VR3_17, VR3_18, VR3_19, VR3_20, VR3_21, VR3_22 = [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
-VR3_list = [VR3_8, VR3_9, VR3_10, VR3_11, VR3_12, VR3_13, VR3_14, VR3_15, VR3_16, VR3_17, VR3_18, VR3_19, VR3_20, VR3_21, VR3_22]
-lenVR3 = numpy.arange(8, 23, 1)
-numVR3 =  [0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] #Total number of aaseq per length
+VR3_20, VR3_21, VR3_22, VR3_23, VR3_24, VR3_25, VR3_26, VR3_27, VR3_28, VR3_29, VR3_30 = [], [], [], [], [], [], [], [], [], [], []
+VR3_list = [VR3_20, VR3_21, VR3_22, VR3_23, VR3_24, VR3_25, VR3_26, VR3_27, VR3_28, VR3_29, VR3_30]
+lenVR3 = numpy.arange(20, 31, 1)
+numVR3 =  [0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0] #Total number of aaseq per length
 for position, line in enumerate(VR3):
     print(position, line)
     for i in range(len(VR3_list)):
@@ -249,8 +252,8 @@ for position, line in enumerate(VR3):
 
 
 # Saving the aaseq into their respective files
-VR_list = [VR1_5, VR1_6, VR1_7, VR2_12, VR2_13, VR2_14, VR2_15, VR3_8, VR3_9, VR3_10, VR3_11, VR3_12, VR3_13, VR3_14, VR3_15, VR3_16, VR3_17, VR3_18, VR3_19, VR3_20, VR3_21, VR3_22]
-VR_list_Name = ['VR1_5', 'VR1_6', 'VR1_7', 'VR2_12', 'VR2_13', 'VR2_14', 'VR2_15', 'VR3_8', 'VR3_9', 'VR3_10', 'VR3_11', 'VR3_12', 'VR3_13', 'VR3_14', 'VR3_15', 'VR3_16', 'VR3_17', 'VR3_18', 'VR3_19', 'VR3_20', 'VR3_21', 'VR3_22']
+VR_list = [VR1_5, VR1_6, VR1_7, VR2_12, VR2_13, VR2_14, VR2_15, VR3_20, VR3_21, VR3_22, VR3_23, VR3_24, VR3_25, VR3_26, VR3_27, VR3_28, VR3_29, VR3_30]
+VR_list_Name = ['VR1_5.fasta', 'VR1_6.fasta', 'VR1_7.fasta', 'VR2_12.fasta', 'VR2_13.fasta', 'VR2_14.fasta', 'VR2_15.fasta', 'VR3_20.fasta', 'VR3_21.fasta', 'VR3_22.fasta', 'VR3_23.fasta', 'VR3_24.fasta', 'VR3_25.fasta', 'VR3_26.fasta', 'VR3_27.fasta', 'VR3_28.fasta', 'VR3_29.fasta', 'VR3_30.fasta']
 print('VR_List:', VR_list)
 
 for i in range(len(VR_list)):
@@ -262,7 +265,6 @@ for i in range(len(VR_list)):
         for k in range(len(VR_list[i])):
             num = str(k + 1)
             VR = VR_list[i]
-            print(VR)
             file.write(">" + num + "\n" + VR[k] + "\n")
         file.close()
 
@@ -270,7 +272,7 @@ for i in range(len(VR_list)):
 # Create a histogram image for the length
 numVR = numpy.concatenate((numVR1, numVR2, numVR3), axis=None)
 name = 'Hist Data'
-VR_list_Name = ['VR1_5', 'VR1_6', 'VR1_7', 'VR2_12', 'VR2_13', 'VR2_14', 'VR2_15', 'VR3_8', 'VR3_9', 'VR3_10', 'VR3_11', 'VR3_12', 'VR3_13', 'VR3_14', 'VR3_15', 'VR3_16', 'VR3_17', 'VR3_18', 'VR3_19', 'VR3_20', 'VR3_21', 'VR3_22']
+VR_list_Name = ['VR1_5', 'VR1_6', 'VR1_7', 'VR2_12', 'VR2_13', 'VR2_14', 'VR2_15', 'VR3_20', 'VR3_21', 'VR3_22', 'VR3_23', 'VR3_24', 'VR3_25', 'VR3_26', 'VR3_27', 'VR3_28', 'VR3_29', 'VR3_30']
 CompName = os.path.join(save_path, name)
 file = open(CompName, 'w')
 for i in range(len(numVR)):
