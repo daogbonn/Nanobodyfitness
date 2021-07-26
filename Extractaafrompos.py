@@ -46,10 +46,10 @@ for b in range(len(name)):
     # Get the positions
     # positions needed - 32, 47, 48, 49, 58, 59, 60, 125, 126
 
-    aa_32, aa_47, aa_48, aa_49, aa_58, aa_59, aa_60, aa_124, aa_125, aa_126 = [], [], [], [], [], [], [], [], [], []
-    needaa = [aa_32, aa_47, aa_48, aa_49, aa_58, aa_59, aa_60, aa_124, aa_125, aa_126]
-    posaa = [32, 47, 48, 49, 58, 59, 60, 124, 125, 126]
-    nameaa = ['aa_32', 'aa_47', 'aa_48', 'aa_49', 'aa_58', 'aa_59', 'aa_60', 'aa_124', 'aa_125', 'aa_126']
+    aa_32, aa_47, aa_48, aa_49, aa_57, aa_58, aa_59, aa_60, aa_124, aa_125, aa_126 = [], [], [], [], [], [], [], [], [], [], []
+    needaa = [aa_32, aa_47, aa_48, aa_49, aa_57, aa_58, aa_59, aa_60, aa_124, aa_125, aa_126]
+    posaa = [32, 47, 48, 49, 57, 58, 59, 60, 124, 125, 126]
+    nameaa = ['aa_32', 'aa_47', 'aa_48', 'aa_49', 'aa_57', 'aa_58', 'aa_59', 'aa_60', 'aa_124', 'aa_125', 'aa_126']
 
 
     for z in range(len(needaa)):
@@ -59,8 +59,8 @@ for b in range(len(name)):
         print(nameaa[z], ':', needaa[z])
 
     # Count the number of amino acids
-    taa32, taa47, taa48, taa49, taa58, taa59, taa60, taa124, taa125, taa126 = [0]*21, [0]*21, [0]*21, [0]*21, [0]*21, [0]*21, [0]*21, [0]*21, [0]*21, [0]*21
-    taa = [taa32, taa47, taa48, taa49, taa58, taa59, taa60, taa124, taa125, taa126]
+    taa32, taa47, taa48, taa49, taa57, taa58, taa59, taa60, taa124, taa125, taa126 = [0]*21, [0]*21, [0]*21, [0]*21, [0]*21, [0]*21, [0]*21, [0]*21, [0]*21, [0]*21, [0]*21
+    taa = [taa32, taa47, taa48, taa49, taa57, taa58, taa59, taa60, taa124, taa125, taa126]
     aa = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'W', 'V', 'Y', '-']
 
     for i in range(len(taa)): # Position like 32 etc

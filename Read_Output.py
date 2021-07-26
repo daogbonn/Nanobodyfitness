@@ -5,19 +5,19 @@ import matplotlib.pyplot as plt
 import os
 import numpy
 import re
-a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_32.out"
-b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_47.out"
-c = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_48.out"
-d = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_49.out"
-e = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_57.out"
-f = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_58.out"
+c = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_32.out"
+d = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_47.out"
+e = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_48.out"
+f = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_49.out"
+g = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_57.out"
+h = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_58.out"
 savepath = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/Structure/Figures'
 
 
 # Get the total values
 tot32, tot47, tot48, tot49, tot57, tot58 = [], [], [], [], [], []
 tot = [tot32, tot47, tot48, tot49, tot57, tot58]
-names = [a, b, c, d, e, f]
+names = [c, d, e, f, g, h]
 
 for a in range(len(names)):
     fields = ["ddG: description" "total" "fa_atr" "fa_rep" "fa_sol" "fa_intra_rep" "fa_intra_sol_xover4" "lk_ball_wtd" "fa_elec" "pro_close" "hbond_sr_bb" "hbond_lr_bb" "hbond_bb_sc" "hbond_sc dslf_fa13" "omega fa_dun" "p_aa_pp" "yhh_planarity" "ref rama_prepro"]
