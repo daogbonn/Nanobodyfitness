@@ -35,9 +35,8 @@ print(test.shape)
 test1 = numpy.asarray(test)
 
 
-
-modelname = ['kmeans', 'Decision Tree', 'Neural Network', 'Neural Network 100 Layers', 'Neural Network 200 Layers']
-modelfile = ["kmeans_model_20210714_08.22.15.p", "decision_tree_model_depthNone_leaf_min1_20210714_08.18.53.p", "neural_network_classifier_20210714_10.52.p", "neural_network_classifier_layers_100_25_20210714_13.04.p","neural_network_classifier_layers_200_50_10_20210714_22.42.p"]
+modelname = ['kmeans', 'Decision Tree', 'Neural Network', 'Neural Network 100 Layers', 'Neural Network 200 Layers', 'Logistic Regression', 'Iterated Logistic Regression']
+modelfile = ["kmeans_model_20210714_08.22.15.p", "decision_tree_model_depthNone_leaf_min1_20210714_08.18.53.p", "neural_network_classifier_20210714_10.52.p", "neural_network_classifier_layers_100_25_20210714_13.04.p","neural_network_classifier_layers_200_50_10_20210714_22.42.p", "logsitic_regression_classifier_20210718_17.29.p", "logsitic_regression_classifier_iter1000_20210718_17.57.p"]
 
 suc = [0]*len(modelname)
 for i in range(len(modelname)):
@@ -60,7 +59,7 @@ for i in range(len(modelname)):
 sc = [80]*len(modelname)
 
 # Plot Success Criteria
-mdlname = ['kmeans', 'Decision Tree', 'NT', 'NT100', 'NT200']
+mdlname = ['kmeans', 'Decision Tree', 'NT', 'NT100', 'NT200', 'LR', 'iLR']
 plt.plot(mdlname, suc, 'r')
 plt.plot(mdlname, sc, 'b', label='Success Criteria')
 plt.legend()

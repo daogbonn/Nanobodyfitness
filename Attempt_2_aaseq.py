@@ -15,6 +15,8 @@ import numpy
 import os.path
 import matplotlib.pyplot
 
+# file_object = open(“filename”, “r”)
+
 # Extract the file into a variable
 short_nb_file = open(a)
 short_nb = short_nb_file.read()
