@@ -120,6 +120,8 @@ def percentnumlohi(a, b):
     # print(len(pernumhi))
     return pernumlo, pernumhi
 
+a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\LowNumberaa.fasta"
+b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\HighNumberaa.fasta"
 
 pernumlo, pernumhi = percentnumlohi(a, b)
 print(pernumlo, pernumhi)
@@ -135,6 +137,7 @@ posaa = [32, 47, 48, 49, 57, 58, 59, 60, 124, 125, 126]
 for i in range(len(names)):
     n = aaono[i]
     plt.plot(aa, tot[i])
+    print(aamin)
     plt.plot(aa[n], tot[i][n], 'rx', label='Original aa')
     plt.legend()
     plt.xlabel('Amino Acids')

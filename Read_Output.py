@@ -11,13 +11,15 @@ e = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg
 f = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_49.out"
 g = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_57.out"
 h = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_58.out"
-savepath = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/Structure/Figures'
+i = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_107.out"
+j = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\structure\\ddg\\ddg_predictions_108.out"
+savepath = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/Structure/Figures/ddg_graphs'
 
 
 # Get the total values
-tot32, tot47, tot48, tot49, tot57, tot58 = [], [], [], [], [], []
-tot = [tot32, tot47, tot48, tot49, tot57, tot58]
-names = [c, d, e, f, g, h]
+tot32, tot47, tot48, tot49, tot57, tot58, tot107, tot108 = [], [], [], [], [], [], [], []
+tot = [tot32, tot47, tot48, tot49, tot57, tot58, tot107, tot108]
+names = [c, d, e, f, g, h, i, j]
 
 for a in range(len(names)):
     fields = ["ddG: description" "total" "fa_atr" "fa_rep" "fa_sol" "fa_intra_rep" "fa_intra_sol_xover4" "lk_ball_wtd" "fa_elec" "pro_close" "hbond_sr_bb" "hbond_lr_bb" "hbond_bb_sc" "hbond_sc dslf_fa13" "omega fa_dun" "p_aa_pp" "yhh_planarity" "ref rama_prepro"]
@@ -43,14 +45,18 @@ for a in range(len(names)):
 
 
 aa = ['A', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
-labels = ['aa 32', 'aa 47', 'aa 48', 'aa 49', 'aa 57', 'aa 58'] # Highlight the original value
-aaorig = ['N', 'L', 'V', 'A', 'I', 'T']
-aaono = [9, 8, 15, 0, 6, 14]
+labels = ['aa 32', 'aa 47', 'aa 48', 'aa 49', 'aa 57', 'aa 58', 'aa 107', 'aa 108'] # Highlight the original value
+aaorig = ['N', 'L', 'V', 'A', 'I', 'T', 'D', 'Y']
+aaono = [9, 8, 15, 0, 6, 14, 1, 17]
 # Plot
 for i in range(len(names)):
     n = aaono[i]
-    plt.plot(aa, tot[i])
-    plt.plot(aa[n], tot[i][n], 'rx', label='Original aa')
+    z = numpy.array(tot[i])
+    print(z)
+    aamin = z.min()
+    plt.plot(aa, z)
+    plt.plot(aa[n], z[n], 'rx', label='Original aa')
+    plt.plot(aa, [aamin]*len(aa), 'k', label='Minimum Value')
     plt.legend()
     plt.xlabel('Amino Acids')
     plt.ylabel('ddg (REU)') #units

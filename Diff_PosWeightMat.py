@@ -15,7 +15,7 @@ c = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_High_VR\
 d = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_Low_VR\\VR1.fasta"
 e = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_Low_VR\\VR2.fasta"
 f = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\Long_Low_VR\\VR3.fasta"
-g = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/Long_Diffmaps/'
+g = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/data/'
 
 # Read all the files into a line
 file_loc = [a, b, c, d, e, f] # Location of the files
@@ -173,6 +173,8 @@ for k in range(22): #VRL_list = [VR1_5L, VR1_6L, VR1_7L, VR2_12L
         print(pwmL, pwmH)
         print(pwm)
         # Make the heatmap
+        pwm = ppmH-ppmL # remove this for ppm
+        print(pwm)
         min = pwm[numpy.isfinite(pwm)].min()
         max = pwm[numpy.isfinite(pwm)].max()
         print(min, max)

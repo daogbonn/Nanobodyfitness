@@ -1,5 +1,5 @@
 # Goal - create the score rmsd plot
-
+import numpy
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
@@ -12,6 +12,7 @@ fname = [a,b]
 name = ['Nb06: High Fitness','Nb08: Low Fitness']
 sname = ['Nb06','Nb08']
 
+scores6, rmsd6, scores8, rmsd8 = [], [], [], []
 
 for z in range(len(fname)):
     nam = fname[z]
@@ -47,22 +48,46 @@ for z in range(len(fname)):
 
     scores = []
     rmsd = []
+    scormsd = [[],[]]
     for i in range(len(actual)):
         line = actual[i]
+        scormsd[0].append(float(line[0]))
+        scormsd[1].append(float(line[25]))
         scores.append(float(line[0]))
         rmsd.append(float(line[25]))
 
-    print(len(scores))
-    print(len(rmsd))
+    print('scores:',len(scores))
 
-    # Plot
-    plt.plot(rmsd, scores, 'k.')
-    plt.xlabel('rmsd')
-    plt.ylabel('Score')
-    plt.title('Score versus rmsd for %s'% name[z])
-    file_name = ('Scoregraph_%s.png' % sname[z])
-    plt.savefig(os.path.join(savepath, file_name))
-    plt.show()
+
+    def sort_np_array(x, column=None, flip=False):
+        x = x[numpy.argsort(x[:, column])]
+        if flip:
+            x = numpy.flip(x, axis=0)
+        return x
+
+    # Sort scormsd
+    sr = sort_np_array(numpy.array(scormsd).transpose(), column=0, flip=False)
+
+    # print the first 5000
+    sr2 = sr[0:5000].transpose()
+    if z == 0:
+        scores6 = sr2[0]
+        rmsd6 = sr2[1]
+    elif z == 1:
+        scores8 = sr2[0]
+        rmsd8 = sr2[1]
+
+# Plot
+# plt.plot(rmsd, scores, 'k.')
+plt.plot(rmsd6, scores6, 'k.', label='High Fitness')
+plt.plot(rmsd8, scores8, 'r.', label='Low Fitness')
+plt.legend()
+plt.xlabel('rmsd')
+plt.ylabel('Score')
+plt.title('Score versus rmsd for Nb06 and Nb08')
+file_name = ('Scoregraph.png')
+plt.savefig(os.path.join(savepath, file_name))
+plt.show()
 
 
 

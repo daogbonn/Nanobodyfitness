@@ -2,6 +2,8 @@
 
 a = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\LowNumberaa.fasta"
 b = "C:\\Users\\ITSloaner\\PycharmProjects\\Nanobodyfitness\\data\\HighNumberaa.fasta"
+savepath = 'C:/Users/ITSloaner/PycharmProjects/Nanobodyfitness/Structure/Figures/Occurence'
+
 
 import numpy
 import os
@@ -101,4 +103,6 @@ for i in range(len(pernumlo)): # amino acid examples eg 32, 41
     plt.xticks(rotation=45)
     plt.title('Histogram of Occurences for aa%d' % posaa[i])
     ax.legend()
+    file_name = ('occurence_aa%d.png' % posaa[i])
+    plt.savefig(os.path.join(savepath, file_name))
     plt.show()
